@@ -82,12 +82,13 @@ def maybe_drop_skills() -> None:
 
 
 def maybe_git_init() -> None:
+    """git init 幂等;**不**做 add/commit,留给 scripts/finish_setup.sh 接力,
+    因为 cruft 在 post_gen 之后才写 .cruft.json,这里 commit 会漏。"""
     if GIT_INIT != "yes":
         return
     try:
         subprocess.run(["git", "init", "--quiet"], check=True)
-        subprocess.run(["git", "add", "-A"], check=True)
-        print("[post_gen] git initialized")
+        print("[post_gen] git initialized (尚未 commit,待 scripts/finish_setup.sh 接力)")
     except (FileNotFoundError, subprocess.CalledProcessError) as exc:
         print(f"[post_gen] WARN: git init skipped ({exc})")
 
@@ -108,9 +109,10 @@ def main() -> None:
     print()
     print("Next steps:")
     print(f"  1. cd {CONTEXT['cookiecutter']['project_slug']}")
-    print("  2. Read CLAUDE.md, fill in 项目背景 / 系统架构 / 技术栈 三节")
-    print("  3. cruft check   (anytime, see if playbook has updates)")
-    print("  4. cruft update  (apply playbook updates with 3-way merge)")
+    print("  2. ./scripts/finish_setup.sh   (一键 git init + first commit,把 .cruft.json 入库)")
+    print("  3. Read CLAUDE.md, fill in 项目背景 / 系统架构 / 技术栈 三节")
+    print("  4. cruft check   (anytime, see if playbook has updates)")
+    print("  5. cruft update  (apply playbook updates with 3-way merge)")
 
 
 if __name__ == "__main__":

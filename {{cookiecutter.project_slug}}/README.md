@@ -15,6 +15,15 @@
 
 🚧 Just bootstrapped from [mokeryes/ai-coding-playbook](https://github.com/mokeryes/ai-coding-playbook).
 
+### Bootstrap 收尾(只做一次)
+
+```bash
+cd {{ cookiecutter.project_slug }}
+./scripts/finish_setup.sh   # git init + first commit(把 .cruft.json 入库)
+```
+
+完成后可删除该脚本:`rm scripts/finish_setup.sh && rmdir scripts`。
+
 ## 文档导航
 
 | 入口 | 用途 |
