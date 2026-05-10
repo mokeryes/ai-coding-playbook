@@ -29,13 +29,13 @@
 
 | type | 用途 | 例子 |
 |---|---|---|
-| `feat` | 新功能 / 新模块 | `feat(transcoder): fun-asr 热词,文件驱动 + 自动同步 vocabulary` |
-| `fix` | bug 修复 | `fix(collector): seq=0 时跳过空批次防止误判退出` |
-| `docs` | 仅文档变更 | `docs(session_context): 截至 2026-05-07 — 模块二完结,模块三待开工` |
+| `feat` | 新功能 / 新模块 | `feat(cache): 改事件驱动失效 + 配置文件可热更` |
+| `fix` | bug 修复 | `fix(parser): URL 参数 decode 漏处理多字节字符` |
+| `docs` | 仅文档变更 | `docs(session_context): 截至 2026-XX-XX — Auth 模块完结,API 待开工` |
 | `refactor` | 重构(行为不变) | `refactor(events): 拆分 base_event 为独立模块` |
-| `chore` | 构建 / 依赖 / 工具链 | `chore(server): 适配 Ubuntu 22.04 VPS — 端口绑 127.0.0.1 + 部署文档` |
-| `test` | 仅测试相关 | `test(filter): 补 image / voice 分类边界用例` |
-| `perf` | 性能优化(行为不变) | `perf(persistence): media MD5 流式计算避免双拷` |
+| `chore` | 构建 / 依赖 / 工具链 | `chore(deploy): 适配 Ubuntu 22.04 — 端口绑 127.0.0.1 + 部署文档` |
+| `test` | 仅测试相关 | `test(parser): 补 URL / path / query 边界用例` |
+| `perf` | 性能优化(行为不变) | `perf(persistence): 文件 MD5 流式计算避免双拷` |
 | `style` | 仅格式化 / 无逻辑 | `style: black 格式化全项目`(很少用) |
 | `build` | 仅构建系统变更 | `build(docker): 升级 base 到 ubuntu:24.04` |
 
@@ -45,11 +45,11 @@
 
 scope 是**模块名 / 文件域**,不是任意标签:
 
-✅ 好:`feat(transcoder)`、`fix(meta_collector)`、`refactor(events)`、`chore(scripts)`、`docs(claude)`
+✅ 好:`feat(auth)`、`fix(api)`、`refactor(events)`、`chore(scripts)`、`docs(claude)`、`feat(parser)`
 
 ❌ 不好:`feat(important)`、`fix(urgent)`、`feat(misc)`、`feat(general)`
 
-如果改动**横跨多模块**,用 `feat(core)` / `chore(server)` / `docs(session)` 这种**虚类目**,但最多 1 个 scope,不要 `feat(a, b, c)`。
+如果改动**横跨多模块**,用 `feat(core)` / `chore(deploy)` / `docs(session)` 这种**虚类目**,但最多 1 个 scope,不要 `feat(a, b, c)`。
 
 ---
 
@@ -58,14 +58,14 @@ scope 是**模块名 / 文件域**,不是任意标签:
 **写规格级变化**:这个 commit 改变了什么"行为"或"约定",而不是"哪些文件"。
 
 ✅ 好:
-- `feat(transcoder): fun-asr 热词,文件驱动 + 自动同步 vocabulary`
-- `chore(server): 适配 Ubuntu 22.04 VPS — 端口绑 127.0.0.1 + 部署文档`
-- `fix(scripts): manage.sh 在 podman 5.x 下 network rm 加 -f`
+- `feat(cache): 改事件驱动失效 + 配置文件可热更`
+- `chore(deploy): 适配 Ubuntu 22.04 — 端口绑 127.0.0.1 + 部署文档`
+- `fix(scripts): manage.sh 在新版容器引擎下 network rm 加 -f`
 
 ❌ 不好:
 - `update code`
 - `fix bug`
-- `修改了 transcoder.py 和 vocabulary.py`(写文件名而非语义)
+- `修改了 invalidator.py 和 rules.yaml`(写文件名而非语义)
 - `feat: improvement`(没说改了什么)
 
 ---
@@ -75,10 +75,10 @@ scope 是**模块名 / 文件域**,不是任意标签:
 行为破坏性变更,在 type 后加 `!`,并在 body 写 `BREAKING CHANGE:` 段:
 
 ```
-feat(events)!: 重命名 meta.text.added 为 meta.message.added
+feat(events)!: 重命名 cache.invalidate.requested 为 cache.flush.requested
 
 BREAKING CHANGE:
-所有订阅 meta.text.added 的下游模块需要改成 meta.message.added。
+所有订阅 cache.invalidate.requested 的下游模块需要改成 cache.flush.requested。
 迁移脚本:scripts/migrate_event_name.sh
 ```
 
@@ -114,8 +114,8 @@ BREAKING CHANGE:
 
 ```
 ❌ update CLAUDE.md           → ✅ docs(claude): 吸收 spec-driven 工作流 — SPEC 前置 / AI 自验 / 回滚 SOP
-❌ fix typo                   → ✅ docs(readme): 修正模块二文件路径错别字
+❌ fix typo                   → ✅ docs(readme): 修正 install 段落错别字
 ❌ wip                        → 不应该作为 commit 落进 main 分支
 ❌ Refactor logging           → ✅ refactor(logger): 拆出 mask.py 集中处理脱敏
-❌ feat: 新模块                → ✅ feat(business_extractor): 模块三骨架 — DeepSeek 意图判断 + 知识库占位
+❌ feat: 新模块                → ✅ feat(notifier): 邮件 + Webhook 双通道通知模块骨架
 ```

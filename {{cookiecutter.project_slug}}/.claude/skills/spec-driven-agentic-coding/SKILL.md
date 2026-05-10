@@ -243,9 +243,9 @@ git commit -m "<中文 conventional commits 描述>"
 好例子:
 
 ```
-feat(transcoder): fun-asr 热词,文件驱动 + 自动同步 vocabulary
-chore(server): 适配 Ubuntu 22.04 VPS — 端口绑 127.0.0.1 + 部署文档
-docs(session_context): 截至 2026-05-07 — 模块二完结,模块三待开工
+feat(cache): 改事件驱动失效 + 配置文件可热更
+chore(deploy): 适配 Ubuntu 22.04 — 端口绑 127.0.0.1 + 部署文档
+docs(session_context): 截至 2026-XX-XX — Auth 模块完结,API 模块待开工
 ```
 
 不要提交:

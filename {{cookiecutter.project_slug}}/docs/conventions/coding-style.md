@@ -144,8 +144,8 @@ def moving_avg(values): ...
 
 | 范畴 | 风格 | 示例 |
 |---|---|---|
-| 文件 / 文件夹 | snake_case | `meta_collector/` `runner.py` |
-| 类型 / 类 / Enum | PascalCase | `MetaEvent` `MsgType` |
+| 文件 / 文件夹 | snake_case | `auth/` `handler.py` |
+| 类型 / 类 / Enum | PascalCase | `UserSession` `OrderStatus` |
 | 函数 / 变量 | snake_case(Python/Rust) / camelCase(TS/Swift) | `parse_xml` / `parseXML` |
 | 常量 | UPPER_SNAKE_CASE | `MAX_BATCH_SIZE` |
 
