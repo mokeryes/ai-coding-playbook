@@ -53,9 +53,20 @@ ai-coding-playbook/
 
 | 场景 | 命令 |
 |---|---|
-| 新项目 bootstrap | `cruft create gh:mokeryes/ai-coding-playbook` |
+| 新项目 bootstrap | `cruft create https://github.com/mokeryes/ai-coding-playbook` |
 | 老项目检查更新 | `cruft check`(项目根目录运行) |
 | 老项目应用更新 | `cruft update`(项目根目录运行) |
+| 老项目应用更新(`cruft update` 报 unicode 错时) | `bash <(curl -fsSL https://raw.githubusercontent.com/mokeryes/ai-coding-playbook/main/tools/manual_update.sh)` |
+
+> ⚠️ **`cruft update` 报 'Unable to interpret changes ... unicode' 怎么办?**
+>
+> 这是 binaryornot 对短小 + CJK 密集的 markdown 文件误判的副作用。本仓库
+> commit `cfa90e1` 已为受影响文件加了 ASCII header 修复,但**已锁旧 commit
+> 的项目首次升级**仍会触发(因为 cruft 内部要重渲染旧 base)。
+>
+> 解决:用 `tools/manual_update.sh`,它绕过 base 重渲染,直接把最新模板
+> 内容 rsync 到当前项目并更新 `.cruft.json`,**尊重 skip 列表 + 不动 .git**。
+> 跑完手动 `git diff` 审 + commit。
 
 ---
 
