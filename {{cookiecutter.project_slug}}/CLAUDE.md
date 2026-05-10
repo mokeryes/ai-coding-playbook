@@ -178,5 +178,5 @@ SPEC 模板见 [`docs/templates/SPEC.md`](docs/templates/SPEC.md)。
 
 ## 16. 模板版本
 
-本项目从 [`moker/ai-coding-playbook`](https://github.com/moker/ai-coding-playbook) 生成,版本锁在 `.cruft.json`。
+本项目从 [`mokeryes/ai-coding-playbook`](https://github.com/mokeryes/ai-coding-playbook) 生成,版本锁在 `.cruft.json`。
 跑 `cruft check` 看更新,`cruft update` 应用更新。

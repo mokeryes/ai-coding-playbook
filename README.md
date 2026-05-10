@@ -1,4 +1,4 @@
-# moker/ai-coding-playbook
+# mokeryes/ai-coding-playbook
 
 > Reusable AI-assisted coding playbook — 一根活动扳手,跨项目复用编码约定与工作流。
 
@@ -10,7 +10,7 @@
 
 ```bash
 pip install cruft
-cruft create gh:moker/ai-coding-playbook
+cruft create gh:mokeryes/ai-coding-playbook
 ```
 
 (本地未推 GitHub 阶段,可用 `cruft create file:///Users/moker/Desktop/ai-coding-playbook`)
@@ -53,7 +53,7 @@ ai-coding-playbook/
 
 | 场景 | 命令 |
 |---|---|
-| 新项目 bootstrap | `cruft create gh:moker/ai-coding-playbook` |
+| 新项目 bootstrap | `cruft create gh:mokeryes/ai-coding-playbook` |
 | 老项目检查更新 | `cruft check`(项目根目录运行) |
 | 老项目应用更新 | `cruft update`(项目根目录运行) |
 

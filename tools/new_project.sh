@@ -15,7 +15,7 @@ if ! command -v cruft >/dev/null 2>&1; then
   exit 1
 fi
 
-REPO_URL="${PLAYBOOK_REPO:-https://github.com/moker/ai-coding-playbook}"
+REPO_URL="${PLAYBOOK_REPO:-https://github.com/mokeryes/ai-coding-playbook}"
 
 echo "[new_project] using template: $REPO_URL"
 exec cruft create "$REPO_URL" "$@"

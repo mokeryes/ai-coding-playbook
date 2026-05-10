@@ -13,7 +13,7 @@
 
 ## Status
 
-🚧 Just bootstrapped from [moker/ai-coding-playbook](https://github.com/moker/ai-coding-playbook).
+🚧 Just bootstrapped from [mokeryes/ai-coding-playbook](https://github.com/mokeryes/ai-coding-playbook).
 
 ## 文档导航
 
