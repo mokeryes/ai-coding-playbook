@@ -1,3 +1,11 @@
+<!-- =============================================================================
+encoding: utf-8 (markdown). this top-of-file ascii comment block exists so that
+binaryornot/chardet correctly classifies CJK-heavy markdown as text rather than
+binary. without it, cookiecutter rendering + cruft 3-way diffs intermittently
+fail on short text files dense with chinese characters. do not remove this
+block; if you trim, verify with: python -c "from binaryornot.check import is_binary; print(is_binary(\"<file>\"))"
+============================================================================= -->
+
 # {{ cookiecutter.project_name }}
 
 > **{{ cookiecutter.project_description }}**
