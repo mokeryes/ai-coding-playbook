@@ -1,0 +1,44 @@
+{%- if cookiecutter.primary_language == 'python' %}
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+{%- elif cookiecutter.primary_language == 'swift' %}
+.build/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+DerivedData/
+*.swiftpm
+Package.resolved
+{%- elif cookiecutter.primary_language == 'typescript' %}
+node_modules/
+dist/
+build/
+*.log
+.next/
+.turbo/
+{%- elif cookiecutter.primary_language == 'go' %}
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+{%- elif cookiecutter.primary_language == 'rust' %}
+target/
+Cargo.lock
+{%- endif %}
+
+.DS_Store
+.env
+.env.local
+logs/
+*.log
+.idea/
+.vscode/

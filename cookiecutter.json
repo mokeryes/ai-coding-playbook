@@ -1,0 +1,12 @@
+{
+    "project_name": "My New Project",
+    "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "project_description": "项目一句话简介(后续在 CLAUDE.md 第 1 节详细填写)",
+    "primary_language": ["python", "swift", "typescript", "go", "rust", "other"],
+    "tech_stack_summary": "(一行字描述技术栈,如:Python 3.11 + PG + Redis;或:Swift 5.9 + iOS 17 + SwiftUI)",
+    "owner": "moker",
+    "owner_email": "lvthislv@gmail.com",
+    "include_skills": ["yes", "no"],
+    "include_optional_sections": ["yes", "no"],
+    "git_init": ["yes", "no"]
+}
